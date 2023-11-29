@@ -1,0 +1,22 @@
+.image-border {
+    border: 5px solid; /* Adjust thickness here */
+}
+
+.good-quality .image-border {
+    border-color:   rgb(10, 145, 10);
+}
+
+.sufficient-quality .image-border {
+    border-color: rgb(255, 145, 0);
+}
+
+.bad-quality .image-border {
+    border-color: red;
+}
+
+p.quality-discussion {
+    /* font-weight: 300; */
+    line-height: 1.5;
+    color: #212529;
+    text-align: justify;
+}

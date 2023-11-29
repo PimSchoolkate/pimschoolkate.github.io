@@ -1,32 +1,36 @@
-<nav class="navbar border-bottom border-dark navbar-expand-lg navbar-light bg-white">
+<link rel="stylesheet" href="/css/navbar.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+
+
+<nav class="navbar border-bottom border-dark navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container">
-        <a class="navbar-brand bg-warning rounded p-1" href="index.html"> Pim Schoolkate</a>
+        <a class="navbar-brand" href="/index.html">Pim Schoolkate</a>
 
-        <!-- Button for that appears when the screen is to small to show or hide navbar-->
-
-        <button class="navbar-toggler"
-                type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active p-1" aria-current="page" href="curriculum-vitae.html"> Curriculum Vitae </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" id="nav-cv" href="curriculum-vitae.html">Curriculum Vitae</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active p-1" aria-current="page" href="projects.html"> Projects </a>
+                    <a class="nav-link" id="nav-projects" href="projects.html">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active p-1" aria-current="page" href="education.html"> Education </a>
-                </li>
-
+                    <a class="nav-link" id="nav-education" href="education.html">Education</a>
+                </li> -->
             </ul>
-        </div>
 
+            <div class="d-flex align-items-center">
+                <a href="mailto:p.a.schoolkate@gmail.com" class="email-button me-2"><i class="fa fa-envelope"></i></a>
+                <a href="https://github.com/PimSchoolkate" class="github-button me-2" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pim-schoolkate/" class="linkedin-button" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </div>
 </nav>
+
+<script src="/js/navbar.js"></script>

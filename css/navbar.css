@@ -1,0 +1,32 @@
+a.email-button, a.github-button, a.linkedin-button, a.twitter-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+a.email-button {
+    background-color: #dd4c39b7; /* Gmail Red */
+}
+
+a.github-button {
+    background-color: #333333b7; /* GitHub Black */
+}
+
+a.linkedin-button {
+    background-color: #0077B5b7; /* LinkedIn Blue */
+}
+
+a.twitter-button {
+    background-color: #1DA1F2; /* Twitter Blue */
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #ceaf00; /* Example active link color */
+}
