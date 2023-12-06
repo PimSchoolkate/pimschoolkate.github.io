@@ -86,63 +86,134 @@
             </p>
 
             <hr>
+        </div>
+
+        <div class="col-md-12 text-center">
 
             <p>
-                <h3>Milestone 1: Dataset adjustments</h3>
+                <h2>Milestone 1: Dataset adjustments</h2>
             </p>
+
+        </div>
+
+        <!-- <div class="col-md-1"></div> -->
+
+        <div class="col-md-5 pt-5">
+            <p class="font-justify header"><b>Objective</b></p>
+
             <p class="font-justify">
-                <b>Objective</b>: Increase mAP@0.5 and mAP@0.5:0.95 (and thus accuracy) by adjusting the dataset to better fit the production environment.
+                Increase mAP@0.5 and mAP@0.5:0.95 (and thus accuracy) by adjusting the dataset to better fit the production environment.
             </p>
+
+            <p class="font-justify header"><b>Current risk: <span class="text-success">Low</span>. Factors:</b></p>
+                Not enough data variety (read: not enough different videos). 
+            </p>    
+        </div>
+
+        <div class="col-md-5 pt-5">
+            <p class="font-justify header"> <b>Deliverable</b></p>
+            <p class="quality-discussion">
+                An improved model (onnx file) with a higher mAP@0.5 and mAP@0.5:0.95 (and thus prediction performance). Please note that, this is not a guarantee, and that extra steps might be needed based on the results of this milestone.
+            </p>
+        </div>
+
+        <div class="col-md-2"></div>
+
+
+        <div class="col-md-4 pt-5">
+
+            <p class="font-justify header"><b>What will be done</b></p>
             <p class="font-justify">
-                <b>What will be done</b> (brief):
                 <ol>
-                    <li>Pipeline setup for A/B testing future models</li>
-                    <li>Creation of new dataset (labeling, "become one with the data", data augmentation, data-pipeline setup).</li>
-                    <li>Test old model on new dataset to quantify improvement for next models.</li>
-                    <li>Train old model with pretrained weights.</li>
-                    <li>Train new model on new data and compare to old model.</li>
-                    <li>Analyze wrongly predicted examples in the test set for determining further improvements.</li>
-                    <li>If needed collect extra data based on analysis.</li>
+                    <li class="video-list">Pipeline setup for A/B testing future models</li>
+                    <li class="video-list">Creation of new dataset (labeling, "become one with the data", data augmentation, data-pipeline setup).</li>
+                    <li class="video-list">Test old model on new dataset to quantify improvement for next models.</li>
+                    <li class="video-list">Train old model with pretrained weights.</li>
+                    <li class="video-list">Train new model on new data and compare to old model.</li>
+                    <li class="video-list">Analyze wrongly predicted examples in the test set for determining further improvements.</li>
+                    <li class="video-list">If needed collect extra data based on analysis.</li>
                 </ol>
             </p>
+        
+        </div>
 
-            <p class="font-justify">
-                <b>Current Risk: <span class="text-success">Low</span>. Factors</b>: Not enough data variety (read: not enough different videos). 
-            </p>
+        <div class="col-md-1"></div>    
 
-            <p class="font-justify">
-                <b>Deliverable</b>: An improved model (onnx file) with a higher mAP@0.5 and mAP@0.5:0.95 (and thus prediction performance). Please note that, this is not a guarantee, and that extra steps might be needed based on the results of this milestone.
-            </p>
-            
-            <p class="font-justify">
-            <b>Planning</b>
+        <div class="col-md-7 pt-5">
+
+            <p class="font-justify header"><b>Planning</b></p>
+            <p class="font-justify">            
                 <ul>
-                    <li><b> Monday, November 27th:</b> First improved model on new dataset, with metrics and indication on how to improve dataset (mAP metric, and inspection on test sample mis predictions). See "What will be done" [1][2][3][4][5][6] </li>
-                    <li><b> Wednesday, November 29th:</b> Feedback from production (what works what doesn't, from your side).</li>
-                    <li><b> Friday, December 1st</b>: Second improved model with feedback. Estimation on how much the model has improved based on the improved dataset. Estimation on what other factors can improve dataset (e.g. augmentation, scraping, or generation). See "What will be done" [7] </li>
-                    <li><b> Tuesday, December 5th</b>: Last version (for Milestone 1) of improved model. See "What will be done" [7]</li>   
+                    <li class="video-list"><b> Monday, November 27th:</b> First improved model on new dataset, with metrics and indication on how to improve dataset (mAP metric, and inspection on test sample mis predictions). See "What will be done" [1][2][3][4][5][6] </li>
+                    <li class="video-list"><b> Wednesday, November 29th:</b> Feedback from production (what works what doesn't, from your side).</li>
+                    <li class="video-list"><b> Friday, December 1st</b>: Second improved model with feedback. Estimation on how much the model has improved based on the improved dataset. Estimation on what other factors can improve dataset (e.g. augmentation, scraping, or generation). See "What will be done" [7] </li>
+                    <li class="video-list"><b> Tuesday, December 5th</b>: Last version (for Milestone 1) of improved model. See "What will be done" [7]</li>   
                 </ul>
             </p>
+        
+        </div>
 
-            <p class="text-justify">
-                <b>Description</b>: The first milestone will focus on training on a more specific dataset. 
-                Namely, the dataset for training version v0 as shown above contained mostly examples of a football in the context of where one most likely encounters a football: a football field. 
-                However, as the application is intended to be used in a living room setting, the dataset should be more specific to this setting. Namely, we found that the model at times would predict a lamp, glasses, or other objects to be a football.
-                As such, the dataset will be changed to contain more examples of footballs in a living room setting by collecting video data of the application in action or by making separate videos with out the application.
-                For making the videos a few principles for assuring the dataset contains enough variation to be able to generalize to new data will should be followed:
+        <div class="col-md-4 pt-5">
+
+            <p class="text-justify header"><b>Description</b></p>
+            <p class="quality-discussion">
+                This milestone will focus on creating a more specific dataset. 
+                Namely, the dataset for training model v1 as shown above contained mostly examples of a football in the context of where one most likely encounters a football: a football field. 
+                However, as the application is intended to be used in a living room setting, the dataset should be more specific to this environment. Namely, we found that the model at times would predict a lamp, glasses, or other objects to be a football.
+                As such, the dataset will be changed to contain more examples of footballs in a living room setting by collecting video data of the application in action or by making separate videos without the application.
+                For making the videos a few principles for assuring the dataset contains enough variation to be able to generalize to new data will should be followed, described on the right.
+            </p>
+        </div>
+
+        <div class="col-md-8 pt-5">     
+            <p class="text-justify header"><b>Video recording guidelines</b></p>
+            
                 <ul>
-                    <li><b>Using different camera angles</b>: having different camera angles assures that the model does not get used to one specific perspective but rather is able to detect the ball from a top view and bottom view.</li>
-                    <li><b>Using different lighting conditions</b>: this will ensure that the model is able to detect the football in bad lighting conditions, for example, when the application is used at night.</li>
-                    <li><b>Using different backgrounds</b>: deep learning alrogirhms are black boxes meaning that it is not clear how they learn to optimize the objective function (in this case get good at predicting footballs). 
+                    <li class="video-list"><b>Using different camera angles</b>: having different camera angles assures that the model does not get used to one specific perspective but rather is able to detect the ball from a top view and bottom view.</li>
+                    <li class="video-list"><b>Using different lighting conditions</b>: this will ensure that the model is able to detect the football in bad lighting conditions, for example, when the application is used at night.</li>
+                    <li class="video-list"><b>Using different backgrounds</b>: deep learning alrogirhms are black boxes meaning that it is not clear how they learn to optimize the objective function (in this case get good at predicting footballs). 
                         However, one general rule is that it will hone in on the most common predictor; thus if the a football is easily detectable by the precense of grass around it, the model will search for grass instead of a football. 
                         Furthermore, if it has never seen a football in the context of a living room, it will have a harder time finding the football. 
                         If it has never seen other objects that can be confused with a football (objects that are round like) it can also have difficulty with finding the football. 
                         Therefore, effort into generating as many different environments with footballs is key, preferably with objects that the model confuses to be a football. </li>
-                    <li><b>Using different footballs</b>: obviously, if the football is always the same, the model will learn that it should always look for this specific objects and nothing else.</li>
-                    <li><b>Using movement</b>: In production, the ball will move, and as such the model might get as input blurry samples of the football. Therefore it is essential that these are included in the train set.</li>
-                    <li><b>Using an area of play</b>: As the ball will always be roughly at the same distance of the camera using data that falls within this region helps the model to specialize on this use case.</li>
+                    <li class="video-list"><b>Using different footballs</b>: obviously, if the football is always the same, the model will learn that it should always look for this specific objects and nothing else.</li>
+                    <li class="video-list"><b>Using movement</b>: In production, the ball will move, and as such the model might get as input blurry samples of the football. Therefore it is essential that these are included in the train set.</li>
+                    <li class="video-list"><b>Using an area of play</b>: As the ball will always be roughly at the same distance of the camera using data that falls within this region helps the model to specialize on this use case.</li>
                 </ul>
-                Furthermore, each video will have the following characteristics:
+            </p>
+        </div>
+
+        <div class="col-md-4 pt-5">  
+
+            <p class="text-justify header"><b>Dataset requirements</b></p>
+                Ideally, as many videos as possible should be collected. However, as a baseline collecting a total of 50 videos with the following properties should be a basic start: 
+                <ul>
+                    <li class="video-list"><b>50 videos</b> (but preferably all) in different surroundings (either a living room, bathroom, kitchen, garden, football field, office, etc.). The same location can be used multiple times as long as the background is different (e.g. one video with a tv and lamp in the background and the other with dinner table in the back)</li>
+                    <li class="video-list"><b>20 videos</b> (but preferably all) of different footballs (different colors, sizes, etc.)</li>
+                    <li class="video-list"><b>20 videos</b> (but preferably all) of different camera angles (top view, bottom view, side view, etc.)</li>
+                    <li class="video-list"><b>20 videos</b> (but preferably all) of different lighting conditions (day, night, etc.)</li>
+                </ul>
+        </div>
+
+
+
+        <div class="col-md-5 pt-5">
+
+            <p class="text-justify header"><b>Number of samples</b></p>
+            <p class="quality-discussion">
+                Having 50 videos of atleast 5 seconds each will result in a total of 250 seconds of video data and as the minimum frame rate of modile cameras is 24 fps this will result in a total of 6000 images. 
+                However, as during production not every frame is passed to the model but rather every so many frames, using only 3-4 frames per second seems more reasonable. 
+                This should also be done because we do not want the model to specialize in these 50 examples. 
+                This will result in a total of 750-1000 images. 
+                <b>Note!</b> Effectively, we only have 50 train samples, which is extremely low (normal models train on 5000+ samples per class). 
+                Thus, focus should be on as many videos as possible (they can be shorter than 10 seconds)
+                <br>
+                In the case that the model improvement is not signficant, analysis on the test set will indicate what the model is struggling with and thus what extra data can be considered to improve the model. This could imply that more data generation is needed and thus that more videos need to be made.
+            </p>
+        </div>
+
+        <div class="col-md-3 pt-5">
+            <p class="text-justify header"><b>Video requirements</b></p>
                 <ul>
                     <li><b>Length</b>: 2-10 seconds</li>
                     <li><b>Resolution</b>: any</li>
@@ -154,41 +225,89 @@
                     <li><b>Football movement</b>: dynamic</li>
                     <li><b>Football type</b>: any</li>
                 </ul>
+        </div>
 
-                Ideally, as many videos as possible should be collected. However, as a baseline collecting a total of 50 videos with the following properties should be a basic start: 
-                <ul>
-                    <li><b>50 videos</b> (but preferably all) in different surroundings (either a living room, bathroom, kitchen, garden, football field, office, etc.). The same location can be used multiple times as long as the background is different (e.g. one video with a tv and lamp in the background and the other with dinner table in the back)</li>
-                    <li><b>20 videos</b> (but preferably all) of different footballs (different colors, sizes, etc.)</li>
-                    <li><b>20 videos</b> (but preferably all) of different camera angles (top view, bottom view, side view, etc.)</li>
-                    <li><b>20 videos</b> (but preferably all) of different lighting conditions (day, night, etc.)</li>
-                </ul>
-                Having 50 videos of atleast 5 seconds each will result in a total of 250 seconds of video data and as the minimum frame rate of modile cameras is 24 fps this will result in a total of 6000 images. 
-                However, as during production not every frame is passed to the model but rather every so many frames, using only 3-4 frames per second seems more reasonable. 
-                This should also be done because we do not want the model to specialize in these 50 examples. 
-                This will result in a total of 750-1000 images. 
-                <b>Note!</b> as I am writing this I am realizing that effectively we have 50 train samples, which is extremely low (normal models train on 10000+ samples per class). 
-                Thus, focus should be on as many videos as possible (they can be shorter than 10 seconds)
-                <br>
-                In the case that the model improvement is not signficant, analysis on the test set will indicate what the model is struggling with and thus what extra data can be considered to improve the model. This could imply that more data generation is needed and thus that more videos need to be made.
-            </p>
+        <div class="col-md-4 pt-5">
+            <p class="text-justify header"><b>Data Pipeline</b></p>
 
             <p class="font-justify">
-                Labeling the data will be done with <a href="https://labelstud.io/">label-studio</a> which provides a streamlined interface for labeling. Although this is intensive work, doing so ourselves will ensure that we understand the data thoroughly and that if any errors occur in the predictions logical reasoning about why these happen can be made.
+                A data pipeline will be build in order to handle the already created data, and possible future data. It will keep track of what data has been ingested, and automatically update the "to-be-labeled" data. This pipeline will make use of the current best model to pre-label all examples to reduce labeling labour.
             </p>
+        </div>
+
+        <div class="col-md-4 pt-5">
+            <p class="text-justify header"><b>Labeling strategy</b></p>
+
+            <p class="font-justify">
+                Labeling will be done with <a href="https://labelstud.io/">label-studio</a> which provides a streamlined interface for labeling. Although this is intensive work, doing so ourselves will ensure that we understand the data thoroughly and that if any errors occur in the predictions logical reasoning about why these happen can be made.
+            </p>
+        </div>
+
+        <div class="col-md-4 pt-5">
+
+            <p class="text-justify header"><b>Training strategy</b></p>
 
             <p class="font-justify">
                 The model will also be trained both with pre-trained weights and without to see how this affects its performance, especially with regards to the more specific dataset.
             </p>
 
+        </div>
+
+        <div class="col-md-12 text-center pt-5">
+
+            <p>
+                <h2>Milestone 1: Results</h2>
+            </p>
+
+        </div>
+
+        <div class="col-md-8 pt-5">
+            <p class="header"><b>What was done as reported in "What will be done"</b></p>
             <p class="font-justify">
-                <b>Results</b>: The following steps were undertaken in order to achieve this milestone. 
                 <ul>
-                    <li>A data pipeline was build in order to handle the current data and possibly future data. It keeps track of what data has been ingested, and automatically updates the "to-be-labeled" data.</li>
-                    <li> A pretrained implementation of YoloV5L was used to pre-annotate the data, making the labeling process easier while also giving intuition as to with what images a fully trained YoloV5L model has trouble, and thus where we should expect improvement. As expected, images with a grassy envinroment where easily correctly predicted, whereas images in living room environments contained more errors.</li>
-                    <li>The currently available data was labeled using label-studio. </li>
-                    <li>The YoloV5n model was trained on the new dataset with pre-trained weights and some alternate structure configuration to maximize its effectiveness at only predicting one object, being a football. The results for this training can be seen in the table below.</li>
-                    <li>The model was tested on a small subset of the data shown below</li>
+                    <li class="video-list">[1] A <b>data pipeline</b> was build in order to handle the current data and possibly future data. It keeps track of what data has been ingested, and automatically updates the "to-be-labeled" data.</li>
+                    <li class="video-list">[2] A pretrained implementation of YoloV5L was used to <b>pre-annotate</b> the data, making the labeling process easier while also giving intuition as to with what images a fully trained YoloV5L model has trouble, and thus where we should expect improvement. As expected, images with a grassy envinroment where easily correctly predicted, whereas images in living room environments contained more errors.</li>
+                    <li class="video-list">[2] The currently available data (provided in the google photos album) was <b>labeled</b> using label-studio. </li>
+                    <li class="video-list">[3] The <b>old model (v1) was tested</b> on the new dataset and it's mAP@0.5 and mAP@0.5:0.95 were adjusted </li>
+                    <li class="video-list">[5] The <b>YoloV5n model</b> was trained on the new dataset with pre-trained weights and some alternate structure configuration to maximize its effectiveness at only predicting one object, being a football.</li>
+                    <li class="video-list">[6] A small <b>test set</b> was created which is used entirely separate from the training process to evaluate the models. This test set was categorized on different distances from the camara to distinguish the models ability for the task at hand.</li>
                 </ul>
+            </p>
+        
+        </div>
+
+        <div class="col-md-4 pt-5">
+            <p class="header"><b>What was done as added bonus</b></p>
+            <p class="font-justify">
+                <ul>
+                    <li class="video-list">A <b>time analysis</b> on the inference time of the different model versions and the application itself was done in order to identify the improvement of future smaller models as well as identifying possible bottlenecks in the application.</li>
+                    <li class="video-list">A <b>smaller, custom YoloV5 model was trained</b> with higher inference speed, but lower precision, recall and mAP. This model serves as an indication for what further improvements are possible.</li>                    
+                </ul>
+            </p>
+
+        </div>
+
+        <div class="col-md-4 pt-5">
+            <p class="header"><b>Results</b></p>
+            <p class="quality-discussion">In the table below, the results of models v1, v2, and v3 can be seen. Model v1 is the original model that was trained in milestone 1, v2 comprises of the same architecture with minor tweaks trained on the improved dataset, and v3 is a custom architecture of YoloV5 with less parameters and thus lower inference time.</p>
+            <p class="quality-discussion">Going from model v1 to v2, an improvement in mAP@0.5 of 48% was realized, whereas for mAP@0.5:0.95 the improvent was 25%. The inference time of model v2 improved with 15% with respect to model v1. This makes v2 in the current stage of the analysis the best model.</p>
+            <p class="quality-discussion">Similarly, comparing model v3 to v3 (we always compare to the best model), the inference time improved by 48% at a performance cost in mAP@0.5 of 35% and mAP@0.5:0.95 of 17%.</p>
+
+        </div>
+
+        <div class="col-md-8 pt-5">
+            <p class="header"><b>Interpretation</b></p>
+            <p class="quality-discussion">
+                The model has improved significantly, with a mAP@0.5 of 0.913 and mAP@0.5:0.95 of 0.695 over the previous model. It seems like the model is correctly predicting the footbal in the living room environment. However, we cannot be sure as there were not that many videos made and thus the model might have overfitted on these examples. The test images shown directly underneath the table show the images on which the models where evaluated. Notably in the left array of images, the fifth image has a confidence of 1.0 (indicating that the model is 100% sure that that is a ball), which is one of the images obtained from the videos, and as such, many similar images like this were used for training. This highly suggests that overfitting on the custom examples occurs as there is too little diversity, which is not desirable. </p>
+            <p class="quality-discussion">
+                In order to properly test the model and assure no significant overfitting ocurred, a separate test set was created with images that the model cannot have seen before. These images were not taking from the internet, as we can not guarantee that the pre-trained weights have not seen these images. The results for this separate test set will be discussed further below.
+            </p>
+            <p class="quality-discussion">
+                The inference time of both v2 and v3 have improved significantly, with v3 being the fastest. This is surprising for v2 as no major changes were made in the architecture except for reducing the amount of anchor boxes that can be selected for inference. The improvements in v3 show that much more improvement can be made both in terms of inference time and accuracy (as it performs better than v1 in all aspects, using the new dataset and less parameters).
+            </p>
+        </div>  
+
+        <div class="col-md-12 pt-5">
 
                 <table class="table">
                     <thead>
@@ -205,6 +324,7 @@
                         <th scope="col">Batch size</th>
                         <th scope="col">mAP@0.5</th>
                         <th scope="col">mAP@0.5:0.95</th>
+                        <th scope="col">Mean IF</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -220,8 +340,9 @@
                         <td>217</td>
                         <td>150</td>
                         <td>16</td>
-                        <td>0.83629</td>
-                        <td>0.59527</td>
+                        <td>0.836</td>
+                        <td>0.595</td>
+                        <td>0.235 s</td>
                       </tr>
 
                       <tr>
@@ -237,12 +358,33 @@
                         <td>16</td>
                         <td>0.913</td>
                         <td>0.695</td>
+                        <td>0.201 s</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row"><p>v3</p></th>
+                        <td>YoloV5n-</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Open Images: Football and Custom data</td>
+                        <td>4565</td>
+                        <td>254</td>
+                        <td>254</td>
+                        <td>300</td>
+                        <td>16</td>
+                        <td>0.883</td>
+                        <td>0.638</td>
+                        <td>0.105 s</td>
                       </tr>
                       
                     </tbody>
                   </table>  
 
             </p>
+        </div>
+
+        <div class="col-md-12 pt-5">
+            <p class="header"><b>Examples of test images</b></p>
         </div>
 
         <div class="col-md-6">
@@ -255,11 +397,10 @@
             <p class="text-center">Example of a prediction on the test set</p>
         </div>
 
-        <div class="col-md-12">
-            <p class="font-justify">
-                <b>Interpretation</b>: The model has improved significantly, with a mAP@0.5 of 0.913 and mAP@0.5:0.95 of 0.695 over the previous model. It seems like the model is correclty predicting the footbal in the living room environment. However, we cannot be sure as there were not that many videos made and thus the model might have overfitted on these examples. In order to test this, two approaches can be taken. One can copy images from the internet and test on this, however, it is not gauranteed that during the pretraining the model has not seen these images. Thus, the second option is to make new videos that the model cannot possibly have seen. I bought a ball for 1 euro and made these iamges to test the performance:
-            </p>
-        </div>    
+        <div class="col-md-12 pt-5">
+            <p class="header"><b>Custom test set part 1.</b></p>
+            <p class="quality-discussion">Some extra time was invested in creating a custom test set. One group of images was used to visually show the shortcomings of the best model, while the other was used to test the performance of the model at different distances. The former is presented here first. The images from this video were not labeled, and thus no metrics could be retrieved from feeding them in the model. Rather, the function is to create as diverse images as possible (although some aspects like the ball and my legs and shoes remain the same) in order to get an understanding of what the model (v2) struggles with. Interpretations for these can be found underneath the images.</p>
+        </div>
 
         <div class="col-md-2 good-quality">
             <div class="image-border">
@@ -431,30 +572,182 @@
         </div>
 
         <div class="col-md-4">
-            <p class="text-center"><b>Good quality: 13/24</b></p>
+            <p class="header"><b>Good quality: 13/24</b></p>
             <p class="quality-discussion">For all these images, we see that only the ball is being predicted as a football. This is considered as the desired outcome and thus labeled as good. In general, these images have a few characteristics in common. First, in most of them, the ball is the centerpoint of the image. Second, the ball is often in the forefront of the image, instead of in the back. Lastly, the ball is close to the feet or between them, suggesting that the model has learned to relate the presence of two legs to indicate that a ball can be found below. Images 22 and 24 are exceptions and it is promising to see that the model gets these examples correct too.</p>
 
         </div>
 
         <div class="col-md-4">
-            <p class="text-center"><b>Sufficient quality: 8/24</b></p>
+            <p class="header"><b>Sufficient quality: 8/24</b></p>
             <p class="quality-discussion">These images are tagged as sufficient as they are good enough for deployment, but could be improved. Key here is that the actual football gets predicted with the highest probability, or when the ball is not in view, nothing gets predicted as a ball. In these images, one common error is that the floor (which has Spanish tiles) is sometimes mistaken for the ball. As noted in the "good" images, a ball is often incorrectly predicted under the feet, and at the forefront of the images, indicating that these are the areas the model expects the ball most. Desirably the model predicts the actual football with the highest probability.</p>
 
         </div>
 
         <div class="col-md-4">
-            <p class="text-center"><b>Bad quality: 3/24</b> </p>
-            <p class="quality-discussion">The bad images are considered images where the ball should have been predicted, but was not or something else is predicted with equal or higher probability. These images have in common that the ball is in the back of the image. In the case of image 9, a large object is seen next to the legs, which is likely mistaken because of their presence.</p>
+            <p class="header"><b>Bad quality: 3/24</b> </p>
+            <p class="quality-discussion">The bad images are considered images where the ball should have been predicted, but was not or something else is predicted with equal or higher probability. These images have in common that the ball is in the back of the image. In the case of image 9, a large object is seen next to the legs, which is likely mistaken because of their presence. Another issue that was not recorded here, but noticed during the labeling of the other test set, is when the ball is blurred due fast movement.</p>
 
         </div>
+
+        <div class="col-md-12">
+            <p class="header"><b>Custom test set part 2.</b></p>
+            <p class="quality-discussion">The second test set comprised of 5 videos each at a different distance of the camera of about 10 seconds. From these roughly 400 images were retrieved, which were pre-annotated using model v2, and labeled in label-studio to obtain ground truth labels. The argumentation for this test set is as follows. Since the application will involve users to play relatively close to the phone, the predictive power of the model needs to be at its highest when the ball is at a close distance from the camera. By creating this test set, we gain control over the specific performance at different distances, allowing us to more specifically set goals for future model improvements (i.e. new model should 95% predict correct bounding box).</p>
+            <p class="quality-discussion">One major downside of the current test set is the diversity of the data. As can be seen below, only examples from one living room and one ball were used. Although this specific ball and surrounding were not shown to the model during training, it could be that the model is (by chance) particularly well at predicting this specific example. As such, we need more data.</p>
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-2">
+            <img class="img-fluid" src="/projects/nutmeg/img/1m.jpg" alt="5m">
+            <p class="text-center">1 meter</p>
+        </div>
+
+        <div class="col-md-2">
+            <img class="img-fluid" src="/projects/nutmeg/img/2m.jpg" alt="5m">
+            <p class="text-center">2 meter</p>
+        </div>
+
+        <div class="col-md-2">
+            <img class="img-fluid" src="/projects/nutmeg/img/3m.jpg" alt="5m">
+            <p class="text-center">3 meter</p>
+        </div>
+
+        <div class="col-md-2">
+            <img class="img-fluid" src="/projects/nutmeg/img/4m.jpg" alt="5m">
+            <p class="text-center">4 meter</p>
+        </div>
+
+        <div class="col-md-2">
+            <img class="img-fluid" src="/projects/nutmeg/img/5m.jpg" alt="5m">
+            <p class="text-center">5 meter</p>
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4 pt-5">
+            <p class="header"><b>Results custom test set</b></p>
+            <p class="quality-discussion">The results of the custom test set are presented in the table to the right. The results are split up in the mAP for each model at different different distances. Before analyzing these results, it should again be noted that to really make meaningful destilations more data should be generated and that for now, this analysis serves as a showcase for how in future projects these metrics can be used in order to optimize the models.</p>
+            <p class="quality-discussion">These metrics suggest that all models perform well at close distance (up till 3 meters) of the camera, with the exception of model v1 at 1 meter. However, for truely accurate results (mAP@0.5:0.95) versions 2 and 3 clearly outperform the first model. With more data, it would possible to make decisions based on these metrics for model development.</p>
+        </div>
+
+        <div class="col-md-8 pt-5">
+            <p class="header"><b>Distance vs mAP results</b></p>
+
+            <table class="table" style="border-collapse: collapse;">
+                <thead>
+                  <tr>
+                    <th scope="col" style=>Distance</th>
+                    <th scope="col" style="border-left: 1px solid black;">v1 mAP@0.5</th>
+                    <th scope="col" >v2 mAP@0.5</th>
+                    <th scope="col" style="border-right: 1px solid black;">v3 mAP@0.5</th>
+                    <th scope="col" >v1 mAP@0.75</th>
+                    <th scope="col" >v2 mAP@0.75</th>
+                    <th scope="col" style="border-right: 1px solid black;">v3 mAP@0.75</th>
+                    <th scope="col" >v1 mAP@0.95</th>
+                    <th scope="col" >v2 mAP@0.95</th>
+                    <th scope="col" style="border-right: 1px solid black;">v3 mAP@0.95</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Row for 1 meter (distance 0) -->
+                  <tr>
+                    <th scope="row" style="border-right: 1px solid black;">1 meter</th>
+                    <td >0.9710</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.9683</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.8662</td>
+                    <td >0.9217</td>
+                    <td style="border-right: 1px solid black;">0.9156</td>
+                  </tr>
+                  <!-- Row for 2 meters (distance 1) -->
+                  <tr>
+                    <th scope="row" style="border-right: 1px solid black;">2 meters</th>
+                    <td >1.0000</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >1.0000</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.8841</td>
+                    <td >0.8987</td>
+                    <td style="border-right: 1px solid black;">0.9244</td>
+                  </tr>
+                  <!-- Row for 3 meters (distance 2) -->
+                  <tr>
+                    <th scope="row" style="border-right: 1px solid black;">3 meters</th>
+                    <td >1.0000</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >1.0000</td>
+                    <td >1.0000</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.8662</td>
+                    <td >0.9015</td>
+                    <td style="border-right: 1px solid black;">0.9178</td>
+                  </tr>
+                  <!-- Row for 4 meters (distance 3) -->
+                  <tr>
+                    <th scope="row" style="border-right: 1px solid black;">4 meters</th>
+                    <td >0.9899</td>
+                    <td >0.9495</td>
+                    <td style="border-right: 1px solid black;">0.9899</td>
+                    <td >0.9899</td>
+                    <td >0.9495</td>
+                    <td style="border-right: 1px solid black;">0.9899</td>
+                    <td >0.8484</td>
+                    <td >0.8166</td>
+                    <td style="border-right: 1px solid black;">0.8606</td>
+                  </tr>
+                  <!-- Row for 5 meters (distance 4) -->
+                  <tr>
+                    <th scope="row" style="border-right: 1px solid black;">5 meters</th>
+                    <td >0.9750</td>
+                    <td >0.9250</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.9726</td>
+                    <td >0.9250</td>
+                    <td style="border-right: 1px solid black;">1.0000</td>
+                    <td >0.7905</td>
+                    <td >0.7119</td>
+                    <td style="border-right: 1px solid black;">0.7801</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div class="col-md-12 pt-5">
+            <p class="header"><b>Technical report model v2</b></p>
+            <p class="quality-discussion">
+                What follows is a technical discussions on the metrics of model v2. These were left specifically at the bottom as they can be somewhat counter intuitive, making it hard to understand what is going on. In any case, when in doubt, be sure to ask for an explanation.
+                No technical discussion is given for model v1 and v3 as the former is not the best model and the latter was not the focus of this milestone and was added as a bonus. However, for the inference time and exception is made. Here all models are discussed.
+            </p>
+
+        </div>
+
+        <div class="col-md-6 pt-5">
+            <p class="header"><b>Inference times</b></p>
+            <p class="quality-discussion">The inference times are shown in histogram (density, the area sums to 1) plots on the right. As we had already seen in the results presented above, the inference time of model v3 is the fastests, with v2 being slightly faster than v3. However, with these graphs we can also appreciate the consistency of these models in their inference time. Specifically, for model v3, we see very little deviation from the mean inference time, whereas for model v1 a larger deviation can be observed.</p>
+            <p class="quality-discussion">Futhermore, something weird seems to happen on the processing side. The speed of the processing is dependent on the type of model. One explanation for this is that when the model makes wrong predictions according to the processing, extra steps need to be taken in order to fix this. As model v2 is the most consistent in its predictions, it needs least adjustments and therefore the processing steps are more consistent.</p>
+        </div>
+
+        <div class="col-md-6 pt-5">
+            <img class="img-fluid" src="/projects/nutmeg/img/aggregated_histograms_v1_v2_v3.png" alt="aggregated_histograms_v1_v2_v3">
+            <p class="text-center">Histogram of runtime of all three models. On the left: inference time. On the right: processing time</p>
+        </div>
+
+        
+
 
         <div class="col-md-6">
             <img class="img-fluid" src="/projects/nutmeg/img/labels_correlogram.jpg" alt="val_batch2_pred">
-            <p class="text-center">Correlation between x, y, width, and height of football predictions</p>
+            <p class="text-center">Correlation between x, y, width, and height of football predictions for model v2</p>
         </div>
 
         <div class="col-md-6">
-            <p class="text-center pt-5"><b>Label correlations</b> </p>
+            <p class="header pt-5"><b>Label correlations</b> </p>
             <p class="quality-discussion">Here, a small discussion on the expected location of the ball will follow. From these plots, the relations between x, y, the width, and height should become evident. Please note, that images are flipped on the y-axis (so y=1 means on the bottom of the image and y=0 is on the top).</p>
             <p class="quality-discussion"> From the first correlation plot, we see that the ball is often in the center of the x-axis and in the bottom of the y-axis, meaning that the observations made above correspond to the actual metrics. This means that the model expect a football to be in the bottom half of the picture, while its horizontal location is expected to be in the middle. The horizontal location has a Gaussian-like distrubion which in this case means that the expection on both sides of the center is the same, and that the ball is not expected to be at the far edge.  </p>
             <p class="quality-discussion">The four plots in the left bottom corner showing the correlation between x, y and the width and height show that a correlation exists between the y-axis and the width and height. This is desired as the model has learned that if the object is higher in the image, and thus likely further away, it's dimensions should be smaller (so y=0.5 should be smaller than y=1.0 as y=0.5 is in the middle and y=1.0 is at the bottom and thus in the front).</p>
@@ -462,73 +755,86 @@
         </div>
 
         <div class="col-md-6 pt-5">
-            <p class="text-center"><b>Training metrics</b> </p>
+            <p class="header"><b>Training metrics</b> </p>
             <p class="quality-discussion">This section discusses how the model progressed during training. A few metrics are presented, of which mAP@0.5 and mAP0.5:0.95 have already been adressed briefly. Three losses, which are the functions on which the model is optimized, are presented here. The box loss calculates the correctness of the box drawn around the football, the object loss is a measure of the probality that a football exists in the box, and lastly the class loss is a measure of the model predicting the correct object in the predicted box. This last loss is always equal to 0, as there is only one class to predict, and thus the model is always correct. Precision and Recall will be discussed later below.</p> 
             <p class="quality-discussion">The training metrics reflect the performance on the data that model sees during training, while the validation metrics report the performance on the data that model does not see during training. In AI training, we are interested in the validation metrics because they reflect how well the model is able to correctly predict unseen data and thus how well the model has understood the pattern it has to predict (in this case, where to predict a bounding box based on an array of values, which we understand as an image with a ball in it). </p>
         </div>
 
         <div class="col-md-6 pt-5">
             <img class="img-fluid pt-5" src="/projects/nutmeg/img/results.png" alt="val_batch2_pred">
-            <p class="text-center">Training metrics</p>
+            <p class="text-center">Training metrics for model v2</p>
         </div>
 
         <div class="col-md-12">
             <p class="quality-discussion">We see that for both the box and object loss, the model reaches its optima on the validation data at around 85 epochs after which it does not improve much on these metrics. Similarly, the mAP (only calculated for the validation data) metrics also stagnate around this epoch. Even though the model has trained for around 200 epochs, early stopping was applied as no progress was being made and thus the selected model was the one trained until 86 epochs. What is promising is that the model is not overfitting too much (validation loss will increase, as the model learns to only memorize the training data). Yet at the same time, due to the nature of the custom data where many of the images as there was little video material, it could be that overfitting is still happening and that the validation set has too much in common with the train set. Thus the Interpretation here should be that if the model does not perform well in production, more diverse data should be collected to make an accurate estimation of the performance.</p>
         </div>
 
-        <div class="col-md-5 pt-5">
+        <div class="col-md-6 pt-5">
             <img class="img-fluid pt-5" src="/projects/nutmeg/img/P_curve.png" alt="p-curve">
-            <p class="text-center">Precision curve</p>
+            <p class="text-center">Precision curve for model v2</p>
         </div>
 
-        <div class="col-md-1 pt-5"></div>
 
-        <div class="col-md-5 pt-5">
-            <p class="text-center pt-5"><b>Precision</b> </p>
+        <div class="col-md-6 pt-5">
+            <p class="header pt-5"><b>Precision</b> </p>
             <p class="quality-discussion">Precision is measured as the amount of true positives (number of correct predictions) divided by the total positive predictions (all of the predictions where the model thinks there is a football), assessing the model's capability to avoid predicting a ball where there is not one. In the plot on the left, the precision is plotted against the confidence, which reflects the probability of which the model thinks that the bounding box contains the footbal. The "all classes 1.00 at 0.935" reflects the lowest confidence threshold for the best precision. Thus, setting the confidence threshold to 0.935 would mean that everytime the model predicts a football it is a correct prediction. Lowering this threshold thus has the implication that sometimes an object gets predicted as a ball, which is in fact not a ball with a high probability.</p>
         </div>
 
-        <div class="col-md-1 pt-5"></div>
 
         
-
-        <div class="col-md-5 pt-5">
-            <p class="text-center pt-5"><b>Recall</b> </p>
+        <div class="col-md-6 pt-5">
+            <p class="header pt-5"><b>Recall</b> </p>
             <p class="quality-discussion">The recall is measured as the amount of true positives (number of correct predictions) divided by the total positive examples (thus all the images where there is a footbal and the model predicts either correct or in correct), assesing the model's ability to detect all instances of the football. Again the recall is plotted against the confidence. The "all classes at 0.94 at 0.00" indicates that the model detects 94% of the football when the confidence threshold is 0. Thus, especially at high confidence thresholds, the model often misses the ball in the image (but the ones it does predict are predicted correctly, as seen in the precision curve). This implies that the current model will sometimes miss the ball, eventhough it is in the image. Note that it is not clear where the ball in the image is, and that it could be the case that the instance where recall is low (at high confidence) are due to the examples with a ball not in the center of the image.</p>
         </div>
 
-        <div class="col-md-2 pt-5"></div>
-
-        <div class="col-md-5 pt-5">
+        <div class="col-md-6 pt-5">
             <img class="img-fluid pt-5" src="/projects/nutmeg/img/R_curve.png" alt="p-curve">
-            <p class="text-center">Precision curve</p>
+            <p class="text-center">Recall curve for model v2</p>
         </div>
 
-        <div class="col-md-1 pt-5"></div>
 
-        <div class="col-md-5">
+        <div class="col-md-6 pt-5">
             <img class="img-fluid pt-5" src="/projects/nutmeg/img/PR_curve.png" alt="p-curve">
             <p class="text-center">Precision - Recall curve</p>
         </div>
 
-        <div class="col-md-5 pt-5">
-            <p class="text-center pt-5"><b>Precision - Recall</b> </p>
+        <div class="col-md-6 pt-5">
+            <p class="header pt-5"><b>Precision - Recall</b> </p>
             <p class="quality-discussion">This graph merely shows the tradeoff between recall and precision. Ideally the curve is as much "pushed" towards the right top corner as this indicates that both precision and recall can be high. For this model, we see that the precision-recall tradeoff is quite favorable as we can have both high precision (for this model 0.881) and high recall (for this model 0.877) (see training metrics).</p>
         </div>
 
-        <div class="col-md-1 pt-5"></div>
-
-        <div class="col-md-5 pt-5">
-            <p class="text-center pt-5"><b>F1 curve</b></p>
+        <div class="col-md-6 pt-5">
+            <p class="header pt-5"><b>F1 curve</b></p>
              <p>Last to discuss in the F1-score. This metric calculates the "harmonic mean" of both precision and recall. If the recall or precision is 0, the F1-score is also 0. Thus, high values of the F1-score indicate both high values for the precision and recall. In this case, the F1-score is plotted against the confidence, and is seen to have a large plateau from around 0.2 to 0.8. From both the recall and precision plots we have learned that between this interval both precision and recall are above their "bend" or beyond their confidence threshold for the optimal value. Thus, in order to satisfy both metrics, a confidence threshold between 0.2 and 0.8 should be chosen. The best confidence threshold for equal optimal precision and recall is 0.355. This however, does not imply that this is the best value for production.</p>
         </div>
 
-        <div class="col-md-1 pt-5"></div>
-
-        <div class="col-md-5 pt-5">
+        <div class="col-md-6 pt-5">
             <img class="img-fluid pt-5" src="/projects/nutmeg/img/F1_curve.png" alt="p-curve">
             <p class="text-center">F1 curve</p>
         </div>
+
+
+        <div class="col-md-12 pt-5 text-center">
+            <p>
+                <h2>Conclusion and recommendations</h2>
+            </p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header pt-5"><b>Conclusion</b></p>
+            <p class="quality-discussion">The deliverable for this project was achieved with model v2, that being an improved model trained on a more in-production specific dataset. Improvement was largely seen in the precision of the model and surprisingly in inference time. Having completed this milestone, a solid working data pipeline is now ready to ingest more data to train the model. As stressed many times, this is the main shortcoming of the current state of the model. More data with more diversity needs to be gathered in order to improve the model and reduce the number of outliers and improve the ability of the model to track the ball, even when it is moving fast. Another benefit of more data is to accurately able to make decisions based on the test metrics, especially when this data is gathered with the distance parameter in mind.</p>
+            <p class="quality-discussion">Next to the agreed upon deliverables, an smaller extra model (v3) was built in order to emphasize the potential improvements that can be made. Surprisingly, this model was twice as fast as the best model, and only slightly (but noticably) reduced its performance. This should indicate that with more data, architecture tweaking, and other optimization strategies the model can become faster and more accurate for smoother gameplay.</p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header pt-5"><b>Recommendations</b></p>
+            <p class="quality-discussion">Please note that these recommendations are written from the perspective of an AI engineer and that from a business perspective these considerations might be different.</p>
+            <p class="quality-discussion">First, the clear path forward is to establish a larger more complete and diverse database. This is simply the biggest guarantee that the model will perform as good as can possibly be.</p>
+            <p class="quality-discussion">Second, in order to improve inference time, pruning strategies as well as hyper parameter tweaking can be used. For this, a complete pipeline is in place in order to easily A/B test each model and come to an optimal architecture for the application at hand.</p>
+            <p class="quality-discussion">Third and from a business perspective, a highly customized model which can not only process the images but also the last known location of the ball could drive up performance to its ultimum. Given succes, it could be interesting to further develop such model. This would aleviate the dependence on ultralytics and allow for a customized pipeline that can more flexibly train state-of-the-art models without waiting for some package</p>
+
+        </div>
+
 
         <div class="col-md-12 pt-5">
 
