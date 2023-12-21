@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport", content="width=device-width, initial-scale=1">
+    <title>Computer vision for dummies</title>
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="/educational/css/computer-vision-for-dummies.css">
+</head>
+<body>
+
+
+<div id="navbar-placeholder"></div>
+
+
+<!-- Bootstrap grid setup -->
+<div class="container pt-5">
+    <div class="row">
+
+        <div class="col-md-12 text-center">
+            <p>
+                <h2>Computer Vision for Dummies</h2>
+            </p>
+        </div>
+
+        <div class="col-md-12">
+            <p class="header">What is a computer vision model?</p>
+            <p class="content">A computer vision model is like a team of detectives looking at an image and trying to find specific shapes which they use as clues to figure out if an object is in the image. Each detective has their own task. The first detective might be looking for basic shapes, like a line, a difference between bright and dark, or a combination of colors. They are the first to see the image, and inform the next detective on which basic shapes they have found. With the information of the first detective, the second detective looks for more complex shapes, for example an arc, circle, or corner, and informs the next detective in line of their findings. Each detective searches for more complex shapes, such as, in the context of face detection, a nose, an eye, or a mouth, and later the shapes of different faces. </p>
+        </div>
+        <div class="col-md-12">    
+            <img class="img-fluid mx-auto d-block" src="/educational/images/detectives.png" alt="val_batch1_pred">
+        </div>
+
+        <div class="col-md-12">
+            <p class="content">The team of detectives finish their work by delivering a report. This report, depending on the task, includes the exact locations where it found the shapes, what those shapes are (like a face), and how sure they are about their findings. This report is what is referred to as a prediction or output of the computer vision model. It is important to realize that the team of detectives are only looking for shapes, and do not have a conceptual understanding of the objects they are looking for. For example, in the context of soccer, when we see a ball in the air, we understand that a player kicked it in the air, that multiple players will be trying to intercept the ball, or that it was aimed at a goal. The team of detectives are instead just trying to identify the shapes that they have learned to identify, which results in the prediction of the ball. However, they have no conceptual understanding of the ball.</p>
+        </div>
+
+        <div class="col-md-12">
+            <p class="header">How does a computer vision model learn?</p>
+            <p class="content">Initially, the team of detectives do not know what to look for, and instead give each other complete random information. In order for them to learn what shapes to detect, the team of detectives is trained on a large set of example cases. The training program looks a follows. The detectives are shown a case and write a report. Based on this report, we give the last detective an evaluation on how well they did, and what the last detective should have answered. The last detective then tells the second to last detective what information it would have needed in order to correctly "solve" the case. Going back through the team of detectives, each detective updates its predecessor what shapes it would have needed to provide the correct information. After all detectives have learned from their mistakes, a new case is presented to them. The detectives are slow learners, and thus the cycle of presenting cases and learning from these is repeated many times. Often detectives have to see the same case multiple times before understanding what information to convey.</p>
+
+        </div>
+
+        <div class="col-md-12">    
+            <img class="img-fluid mx-auto d-block" src="/educational/images/learningdetectives.png" alt="val_batch1_pred">
+        </div>
+
+        <div class="col-md-12">
+            <p class="header">How do we test a computer vision model?</p>
+            <p class="content">After training, we want to know how well the detectives have understood the task we want them to do. Therefore, we show them images they have not seen during the training time and see how well they do. We do this, because it could be the case that the detectives have memorized all the training cases instead of looking for general shapes. Given this evaluation, we can compare different teams of detectives based on their performance.</p>
+        </div>
+
+
+        <div class="col-md-12">
+            <p class="header">Evaluation metrics for object detection</p>
+            <p class="content">Within the context of object detection, a few metrics are important to understand in order to interpret the performance of the model. The metric that is most often mentioned is the Mean Average Precision (mAP) which is often denoted as mAP@0.5 or mAP@0.5:0.95. The mAP is calculated using the precision, recall, and intersection over union metrics. Each of these metrics will be explained in backwards order as they build on top of each other.</p>
+        </div>
+
+        <div class="col-md-12">
+            <p class="header">Intersection over union</p>
+        </div>
+
+        <div class="col-md-6">
+            
+            <p class="content">The intersection over union (IoU) is a metric that measures how well the predicted bounding box (the box drawn around the object) overlaps with the ground truth bounding box (the box drawn around the object by a human). More precisely, the IoU measures the percentage or proportion of overlap of the predicted bounding box with the ground truth. If the IoU = 0.0, the model has completely missed the object, whereas if the IoU = 1.0 the model perfectly predicted the object.</p>
+            <p class="content">Based on the context of the model we can determine what is a good enough IoU to consider the prediction a succes. In the images to the right for example, IoU = 0.5 is not satisfactory since the ball takes up a large portion of the picture and thus, the location of the bounding box is much off. On the other hand, an IoU = 0.95 is an excellent result.</p>
+            <p class="content">Now, we can ask ourselves the following question: what is the minimum percentage of overlap the prediction should have with the ground truth for us to consider this as a good prediction. This percentage is called the IoU threshold and in conjuction with the earlier mentioned mAP is denoted as @IoU. Thus, the mAP measured with an IoU threshold of 50% is denoted as mAP@0.5.</p>  
+        </div>
+
+        <div class="col-md-3">    
+            <img class="img-fluid mx-auto d-block" src="/educational/images/iou05.jpg" alt="val_batch1_pred">
+            <p class="text-center">Predicting a ball. IoU = 0.5</p>
+        </div>
+
+        <div class="col-md-3">    
+            <img class="img-fluid mx-auto d-block" src="/educational/images/iou0.95.jpg" alt="val_batch1_pred">
+            <p class="text-center">Predicting a ball. IoU = 0.95</p>
+        </div>
+
+        <div class="col-md-12">
+            <p class="header">True Positives, True Negatives, False Positives, and False Negatives</p>
+            <p class="content">True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN) refer to the four possible outcomes of a prediction. A TP is easy to understand: the model correctly predicted the object in the image. Similarly, a TN indicates that the model correctly did not predict an object, where that object is not present. A FP refers to the prediction of an object, where there is no such object. Lastly, FN are the objects that are in the image but which the model did not identify. For object detection, we usually only consider the TP, FP, and FN, since the TN can be infinte (we choose as many points without an object in the image as we want where the model did not predict an object).</p>
+            <p class="content">As an example, consider the images of the cat below. The left most image correctly detects the cat, therefore TP=1, FP=0, FN=0. THe middle image, does not detect the cat, but instead mistakes the piece of wood for the cat, thus TP=0, FP=1, FN=1. Lastly on the right, the cat is not detected, and thus TP=0, FP=0, FN=1. Note that the number next to the word "cat" is not the IoU, but the confidence of the model that the prediction is a cat.</p>
+            <p class="content">We determine whether something is a true positive or not based on the IoU threshold discussed above. For example, with an IoU threshold of 0.7, a prediction with an IoU = 0.5 is considered a FP, whereas a prediction with IoU = 0.95 is considered a TP, just like with the football example above.</p>
+            <p class="content">Normally, instead of counting the TP, FP, and FN for one image, we count them for all predictions in all images. By doing so we can get a clear view of the performance of the model based on the set of images we let it predict. With the total TP, FP, and FN we can compute the precision and recall, which, once understood, give a better intuition of the performance of the model, and how it struggles.</p>
+        </div>        
+
+
+        <div class="col-md-4">
+            <img class="img-fluid" src="/educational/images/lava - TP.jpg" alt="val_batch1_pred">
+            <p class="text-center">An example of a True Positive: the cat was correctly predicted</p>
+        </div>
+
+        <div class="col-md-4">
+            <img class="img-fluid" src="/educational/images/lava - FP.jpg" alt="val_batch1_pred">
+            <p class="text-center">An example of a False Positive: something else was wrongly detected as a cat</p>
+        </div>
+
+        <div class="col-md-4">
+            <img class="img-fluid" src="/educational/images/lava - FN.jpg" alt="val_batch1_pred">
+            <p class="text-center">An example of a False Negative: The cat was not detected at all</p>
+        </div>
+
+
+        <div class="col-md-6">
+            <p class="header">Precision</p>
+            <p class="content">The precision is a metric which reflects, as the name suggests, how precise the model is. The question which precision answers is "What percentage of the positive predictions are correct"? The precision is easy to calculate. We simply add up the TP and FP (thus the total amount of positive predictions), and divide the TP with this addition: 
+                \[ Precision = \frac{TP}{TP + FP}\]</p>
+                <p class="content">Imagine we have predicted 100 objects in 25 images. We have counted the following prediction metrics: TP = 75, FP = 5, FN = 20. Then, the precision is equal to \( \frac{75}{75+5} = 0.9375 \). Thus, we can learn from this metric that when the model predicts there to be an object, 93.75% of the time this prediction is correct and 6.25% it isn't.</p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header">Recall</p>
+            <p class="content">The recall is a metric which conveys how well the model is able to find all the objects in the image. The question which recall answers is "What percentage of the objects in the image are correctly predicted"? To calculate the recall, We simply add up the TP and FN (thus the total amount of objects in the image), and divide the TP with this addition: 
+                \[ Recall = \frac{TP}{TP + FN}\]</p>
+            <p class="content">Imagine we have predicted 100 objects in 25 images. Just like the example to the left, we have counted the following prediction metrics: TP = 75, FP = 5, FN = 20. Then, the recall is equal \( \frac{75}{75+20} = 0.7895 \). Thus, from this metric, we learn that when an object is present 78.95 % of the time, it correctly predicts it.</p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header">Precision vs Confidence</p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="header">Recall vs Confidence</p>
+        </div>
+
+        <div class="col-md-6">
+            <p class="content">In order to get a high precision we can choose to only use predictions with a high confidence. This way, we reduce the FP as we generally observe that when a model is incorrect, it is also less confident about its prediction. However, by doing so, we might miss some of the objects that are present in the images, thus increasing the FN and lowering the recall. As the example below shows, we only include predictions with confidence above 0.9. Thus the precision is equal to 1, whereas the recall is equal to 0.5.</p>
+        </div> 
+
+        <div class="col-md-6">
+            <p class="content">On the other hand, we can choose to use all predictions, even the ones with a low confidence, securing that we always the detect the object if it is in the image. This is for example important in applications such as cancer detection, where it is undesirable to miss the detection of cancer. This approach does increase the number of FP and thus, the precision declines. Similarly, the example below shows what happens if we consider predictions with low confidence. The recall equals 1, as we have correctly predicted all persons in this image, however the precision equals 0.2.</p>
+        </div>
+
+        <div class="col-md-6">
+            <img class="img-fluid" src="/educational/images/highprecision.jpg" alt="val_batch1_pred">
+            <p class="text-center">High precision. Low recall</p>
+
+        </div>
+
+        <div class="col-md-6">
+            <img class="img-fluid" src="/educational/images/highrecall.jpg" alt="val_batch1_pred">
+            <p class="text-center">High recall. Low precision</p>
+        </div>
+
+        <div class="col-md-3">
+            <p class="content">In order to get an idea how the precision is affected by the confidence of the model, we can plot the precision against the confidence for a given model as shown on the right. As can be expected, with a low confidence, the precision is also low, while increasing the confidence also increases the precision. When the confidence is set to 1.0 the precision is also 1.0. Note that this curve looks different for each model.</p>
+        </div>
+
+        <div class="col-md-3">
+            <img class="img-fluid" src="/educational/images/P_curve.png" alt="val_batch1_pred">
+        </div>
+
+        <div class="col-md-3">
+            <p class="content">Similarly, we can plot the recall against the confidence. As already described above, at low confidence, the recall is high, while at high confidence the recall is low. In this case, it seems that some of the objects were never detected, even at low confidence.</p>
+        </div>
+
+        <div class="col-md-3">
+            <img class="img-fluid" src="/educational/images/R_curve.png" alt="val_batch1_pred">
+        </div>    
+    
+</div>
+
+<!-- External JS libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+<script>
+    // Use JavaScript to load the navbar component
+    $(function() {
+        $("#navbar-placeholder").load("/navbar.html");
+    });
+</script>
+
+</body>
+</html>
