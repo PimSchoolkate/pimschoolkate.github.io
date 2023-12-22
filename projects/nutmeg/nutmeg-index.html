@@ -24,13 +24,22 @@
                 <h2>Introduction</h2>
             </p>
 
-            <p class="text-justify">
-                This document serves as a progress report for the development of a football detection computer vision model. It will be updated along the way as the project progresses. This initial version of the document provides an overview of the possible future milestones.
+            <p class="quality-discussion">
+                This document serves as a progress report for the development of a football detection computer vision model. It will be updated along the way as the project progresses.
             </p>
 
-            <p class="text-justify">
-                <b>Note</b>: for measuring the performance of computer vision models the mAP (mean average precision, for more info click <a href="https://blog.roboflow.com/mean-average-precision/">link</a>) is used.
-                What is important to know is that it is measured from 0 to 1, where 1 is the best performance. However, a mAP@0.5:0.95 of 0.5 is already considered to be a good model, whereas a mAP@0.5 of 0.5 is not so good of a model. For this project, we should be aiming at around mAP@0.5 of 0.9 and mAP:0.5:0.95 of 0.7.
+            <p class="quality-discussion">
+                <b>Note</b>: a base understanding of computer vision models is needed to understand some of the content in this document. Please look at <a href="/educational/computer-vision-for-dummies.html">Computer Vision for Dummies</a> for a simple explanation on what computer vision models do, and how to measure their performance.
+            </p>
+
+            <p class="header"><b>Hot Links</b></p>
+
+            <p class="quality-discussion">
+                <ul>
+                    <li><a href="/educational/computer-vision-for-dummies.html">Computer Vision for Dummies</a></a></li>
+                    <li><a href="/projects/nutmeg/video-feedback.html">Guidelines for data collection</a>
+                </ul>
+
             </p>
 
             <!-- hline -->
@@ -40,7 +49,7 @@
             <p>
                 <h3>Milestone 0 [COMPLETED]: initial model</h3>
             </p>
-            <p class="text-justify">
+            <p class="quality-discussion">
                 This milestone provided the initial model as was implemented in the first iteration of the application. During training it was found to achieve a mAP@0.5 of 0.83629 and mAP@0.5:0.95 of 0.59527. However, the data used for training did not allign with the data used in production (i.e. living room setting). Next to this, the model was found to be too slow in production, and as such inference time needs to be decreased. It was therefore decided to use this model as an initial baseline to improve further models. The baseline has the following characteristics (best model indicated with green):
             </p>
 
@@ -81,7 +90,7 @@
                 </tbody>
               </table>  
 
-            <p class="font-justify">
+            <p class="quality-discussion">
                 Please note that the mAP@0.5 and mAP@0.5:0.95 are calculated on the test set of the Open Images dataset and thus do not reflect the performance of the model in production, as these images are mostly in a football environment setting and not living room environment.
             </p>
 
